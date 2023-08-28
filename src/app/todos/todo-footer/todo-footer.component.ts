@@ -14,9 +14,11 @@ export class TodoFooterComponent implements OnInit , OnDestroy{
   storeSubs:Subscription;
   selected!: Observable<validFilters>;
   pending: number = 0;
+  areCompleted: boolean = false;
   filters: validFilters[] = ['all', 'completed', 'active'];
   constructor(private store: Store<AppState>) {
     this.storeSubs=this.store.subscribe((state) => {
+      this.areCompleted = state.todos.some((todo) => todo.completed);
       this.pending = state.todos.filter((todo) => !todo.completed).length;
     });
   }

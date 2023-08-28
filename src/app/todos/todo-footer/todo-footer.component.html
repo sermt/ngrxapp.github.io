@@ -12,5 +12,5 @@
     </li>
   </ul>
   <!-- Hidden if no completed items are left ↓ -->
-  <button (click)="onClearCompleted()" *ngIf="pending > 0" class="clear-completed">Clear completed</button>
+  <button (click)="onClearCompleted()" *ngIf="areCompleted" class="clear-completed">Clear completed</button>
 </footer>
