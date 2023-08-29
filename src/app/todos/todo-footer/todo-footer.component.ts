@@ -19,6 +19,7 @@ export class TodoFooterComponent implements OnInit , OnDestroy{
   constructor(private store: Store<AppState>) {
     this.storeSubs=this.store.subscribe((state) => {
       this.pending = state.todos.filter((todo) => !todo.completed).length;
+      this.areCompleted = state.todos.some((todo) => todo.completed);
     });
   }
   ngOnInit(): void {
